@@ -5,17 +5,21 @@ import ExpenseDetails from './ExpenseDetails.js'
 import Card from '../UI/Card.js'
 import './ExpenseItem.css'
 
+
 // function ExpenseItem(props) {
 const ExpenseItem = (props) => {
-    // const expenseDate = new Date(2023, 6, 1);
-    // const expenseTitle = 'description';
-    // const expenseAmount = "price";
-    // const expenseLocation = "location";
+
+    const clickRemoveHandler = () => {
+        
+        const expenseEle = document.querySelector('.expense-item');
+        expenseEle.remove();
+    };
 
     return (
         <Card className="expense-item">
             <ExpenseDate date={props.date}/>
             <ExpenseDetails title={props.title} amount={props.amount} location={props.location}/>
+            <button className='delete' onClick={clickRemoveHandler}>Delete</button> 
         </Card>
     
     );
