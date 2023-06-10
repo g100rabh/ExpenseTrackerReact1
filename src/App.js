@@ -7,28 +7,28 @@ const App = () => {  // Arrow funtion
     {
       id: 'e1',
       title: 'des1',
-      amount: 'price1',
+      amount: 40,
       date: new Date(2023, 5, 3),
       location: 'shahdol'
     },
     {
       id: 'e2',
       title: 'des2',
-      amount: 'price2',
+      amount: 90,
       date: new Date(2023, 2, 3),
       location: 'bhopal'
     },
     {
       id: 'e3',
       title: 'des3',
-      amount: 'price3',
+      amount: 200,
       date: new Date(2023, 1, 3),
       location: 'indore'
     },
     {
       id: 'e4',
       title: 'des4',
-      amount: 'price4',
+      amount: 10,
       date: new Date(2023, 4, 3),
       location: 'shahdol'
     },
@@ -43,7 +43,7 @@ const App = () => {  // Arrow funtion
 
   return (
     <div>
-      <Expenses items = {expenses}/> 
+      <Expenses items = {expenses}/>
     </div>
   );
 }

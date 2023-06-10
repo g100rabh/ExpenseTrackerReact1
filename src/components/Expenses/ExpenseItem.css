@@ -75,3 +75,23 @@
     border-radius: 8px;
     margin-left: 00.5rem;
   }
+  .chngTitle{
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(224, 160, 64);
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-left: 00.5rem;
+  }
+  .Add{
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(6, 61, 4);
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-left: 00.5rem;
+  }
