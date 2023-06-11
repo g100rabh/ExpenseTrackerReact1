@@ -51,18 +51,25 @@ const ExpenseForm = () => {
         //     enteredDate: event.target.value
         // });
     }
-    // console.log(enteredTitle)
+
     const form = document.querySelector('.form');
     const clickSubmitHandler = (event) =>{
         event.preventDefault();
-        console.log(enteredTitle, enteredDate, enteredAmount, enteredlocation);
-        form.reset();
+        // console.log(enteredTitle, enteredDate, enteredAmount, enteredlocation);
         
+        const expenseData = {
+            title: enteredTitle,
+            date: new Date (enteredDate),
+            amount: enteredAmount,
+            location: enteredlocation
+        }
+        console.log(expenseData);
+        form.reset();
     }
     
 
     return (
-        <form className='form' >
+        <form className='form' onSubmit={clickSubmitHandler}>
             <div className='expense-input' >
                 <div className='expense-input'>
                     <label>Title:</label>
@@ -82,7 +89,7 @@ const ExpenseForm = () => {
                 </div>
             </div>
             <div className='expense-input'>
-                <button type='submit' onClick={clickSubmitHandler}>Add Expense</button>
+                <button type='submit' >Add Expense</button> {/*  // onClick={clickSubmitHandler} */}
             </div>
         </form>
        
