@@ -45,8 +45,8 @@ const App = () => {  // Arrow funtion
     // console.log(expense);
     // expenses.push(expense);
     // console.log(expenses)
-    setExpenses((initialExpenses) => {
-      return [...initialExpenses, expense]
+    setExpenses((prevExpenses) => {
+      return [ expense, ...prevExpenses]
     })
   }
   // console.log(expenses, initialExpenses)

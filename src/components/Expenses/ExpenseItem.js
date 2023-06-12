@@ -11,8 +11,10 @@ const ExpenseItem = (props) => {
     
     // Delete button functionality by DOM
     const clickRemoveHandler = () => {
-        const expenseEle = document.querySelector('.expense-item');
+
+        const expenseEle = document.querySelector('.expense-item')
         expenseEle.remove();
+        
     };
     // console.log(useState(props))
     const [title, setTitle] = useState(props.title);
@@ -22,7 +24,7 @@ const ExpenseItem = (props) => {
     }
     const [amount, setamount] = useState(props.amount);
     const clickAddHandler = () =>{
-        setamount(amount + 100);
+        setamount(parseInt(amount) + 100);
     }
 
     return (
