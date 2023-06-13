@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import './ExpenseForm.css'
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
-    const [enteredlocation, setEnteredLocation] = useState('');
-
+    const [enteredLocation, setEnteredLocation] = useState('');
+    const [isFormVisible, setIsFormVisible] = useState(false); // making form visibility so that we can use two more buttons Add new expense and canel.
     // const[userInput,setUserInput] = useState({
     //     enteredTitle: '',
     //     enteredAmount: '',
@@ -52,7 +52,7 @@ const ExpenseForm = () => {
         // });
     }
 
-    const form = document.querySelector('.form');
+    // const form = document.querySelector('.form');
     const clickSubmitHandler = (event) =>{
         event.preventDefault();
         // console.log(enteredTitle, enteredDate, enteredAmount, enteredlocation);
@@ -61,38 +61,60 @@ const ExpenseForm = () => {
             title: enteredTitle,
             date: new Date (enteredDate),
             amount: enteredAmount,
-            location: enteredlocation
+            location: enteredLocation
         }
-        console.log(expenseData);
-        form.reset();
+        // console.log(expenseData);
+        props.onSaveExpenseData(expenseData);
+
+        // form.reset();
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredDate('');
+        setEnteredLocation('');
     }
+    
+    const clickHandler = (event) =>{
+        event.preventDefault();
+        console.log('s')
+        setIsFormVisible(true);
+        
+    }
+    const cancelCLickHandler = (event) => {
+        event.preventDefault();
+        console.log("c")
+        setIsFormVisible(false);
+    }
+    
     
 
     return (
-        <form className='form' onSubmit={clickSubmitHandler}>
-            <div className='expense-input' >
-                <div className='expense-input'>
-                    <label>Title:</label>
-                    <input type="text" onChange={inputChangeHandler}/>
+        <div>
+            {!isFormVisible && <button type='submit' onClick={clickHandler}>Add New Expense</button>}
+            {isFormVisible && <form className='form' onSubmit={clickSubmitHandler}>
+                <div className='expense-input' >
+                    <div className='expense-input'>
+                        <label>Title:</label>
+                        <input type="text" onChange={inputChangeHandler} value={enteredTitle}/>
+                    </div>
+                    <div className='expense-input'>
+                        <label>Location:</label>
+                        <input type="text"onChange={locationChangeHandler} value={enteredLocation}/>
+                    </div>
+                    <div className='expense-input'>
+                        <label>Amount:</label>
+                        <input type="number" onChange={amountChangeHandler} value={enteredAmount}/>
+                    </div>
+                    <div className='expense-input'>
+                        <label>Date:</label>
+                        <input type="date" min="2020-01-01" onChange={dateChangeHandler} value={enteredDate}/>
+                    </div>
                 </div>
                 <div className='expense-input'>
-                    <label>Location:</label>
-                    <input type="text"onChange={locationChangeHandler} />
+                    <button type='submit' onClick={cancelCLickHandler}>Cancel</button>
+                    <button type='submit' >Add Expense</button> {/*  onClick={clickSubmitHandler} */}
                 </div>
-                <div className='expense-input'>
-                    <label>Amount:</label>
-                    <input type="number" onChange={amountChangeHandler}/>
-                </div>
-                <div className='expense-input'>
-                    <label>Date:</label>
-                    <input type="date" min="2022-01-01" onChange={dateChangeHandler}/>
-                </div>
-            </div>
-            <div className='expense-input'>
-                <button type='submit' >Add Expense</button> {/*  // onClick={clickSubmitHandler} */}
-            </div>
-        </form>
-       
+            </form>}  
+        </div> 
     );
 }
 
