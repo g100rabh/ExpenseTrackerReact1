@@ -23,7 +23,9 @@ const filteredExpenses = props.items.filter((expense) => {
     return (
     <Card className="exp">
       <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
-      {filteredExpenses.map(expense => (
+
+      {filteredExpenses.length === 0 ? <p className='para'>No expenses found!</p>:
+      filteredExpenses.map(expense => (
       <ExpenseItem
         key ={expense.id} 
         title={expense.title} 
